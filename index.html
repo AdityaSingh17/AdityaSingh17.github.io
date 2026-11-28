@@ -7,8 +7,6 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  var ok=null; try{ok=localStorage.getItem('ga-consent');}catch(e){}
-  gtag('consent','default',{analytics_storage: ok==='yes'?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
   gtag('js', new Date());
   gtag('config', 'G-1YWTJ77NY6');
 </script>
@@ -338,15 +336,6 @@
   @media (max-width:900px){.journey::before{background:linear-gradient(180deg,var(--line),var(--accent),var(--line))}}
   @media (prefers-reduced-motion:reduce){.tile,.pillar,.case,.box,details.full,.results div,.nav .brand::after{animation:none}}
 
-  /* Cookie banner */
-  .ck{position:fixed;left:16px;bottom:16px;z-index:90;max-width:340px;background:rgba(11,15,26,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:0 16px 40px rgba(0,0,0,.5);font-size:13px;line-height:1.5;color:var(--body);display:none;animation:pop .3s ease}
-  .ck.show{display:block}
-  .ck p{margin:0}
-  .ck .ck-b{display:flex;gap:8px;margin-top:10px}
-  .ck button{font:500 12px var(--mono);padding:7px 14px;border-radius:8px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--body);transition:border-color .15s,color .15s}
-  .ck button:hover{border-color:var(--accent2);color:var(--ink)}
-  .ck button.y{background:linear-gradient(90deg,#3d6bff,#22b8d6);border-color:transparent;color:#fff}
-  @media (max-width:560px){.ck{left:12px;right:12px;bottom:12px;max-width:none}}
 </style>
 </head>
 <body>
@@ -680,22 +669,6 @@
     el.classList.add('spot');
     el.addEventListener('mousemove',function(e){var r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');});
   });
-})();
-</script>
-<div class="ck" id="ck" role="dialog" aria-label="Cookie consent">
-  <p>I use analytics cookies to see how visitors use this site. No ads, no tracking elsewhere.</p>
-  <div class="ck-b"><button class="y" id="ck-y">Accept</button><button id="ck-n">Decline</button></div>
-</div>
-<script>
-(function(){
-  var b=document.getElementById('ck'),v=null;
-  try{v=localStorage.getItem('ga-consent');}catch(e){}
-  if(!v) b.classList.add('show');
-  function set(x){try{localStorage.setItem('ga-consent',x);}catch(e){}
-    if(x==='yes'&&window.gtag) gtag('consent','update',{analytics_storage:'granted'});
-    b.classList.remove('show');}
-  document.getElementById('ck-y').onclick=function(){set('yes');};
-  document.getElementById('ck-n').onclick=function(){set('no');};
 })();
 </script>
 </body>
